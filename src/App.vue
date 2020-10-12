@@ -2,20 +2,24 @@
   <div id="app">
     <ToggleInput v-model="checked" />
     <hr>
+    <DatePicker v-model="date" :options="{ firstDay: 1 }" />
   </div>
 </template>
 
 <script>
 import ToggleInput from './components/ToggleInput.vue'
+import DatePicker from '@/components/DatePicker';
 
 export default {
   name: 'App',
   components: {
+    DatePicker,
     ToggleInput
   },
   data() {
     return {
-      checked: false
+      checked: false,
+      date: new Date()
     };
   }
 }
