@@ -3,18 +3,23 @@
     <ToggleInput v-model="checked" />
     <hr>
     <DatePicker v-model="date" :options="{ firstDay: 1 }" />
+    <hr>
+    <AnnouncementModal />
+    <hr>
   </div>
 </template>
 
 <script>
 import ToggleInput from './components/ToggleInput.vue'
 import DatePicker from '@/components/DatePicker';
+import AnnouncementModal from '@/components/AnnouncementModal';
 
 export default {
   name: 'App',
   components: {
     DatePicker,
-    ToggleInput
+    ToggleInput,
+    AnnouncementModal
   },
   data() {
     return {
