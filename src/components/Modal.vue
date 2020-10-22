@@ -19,6 +19,10 @@
       show: {
         type: Boolean,
         required: true
+      },
+      preventBackgroundScrolling: {
+        type: Boolean,
+        default: true
       }
     },
     created() {
@@ -29,6 +33,18 @@
       };
       document.addEventListener('keydown', closeModal);
       this.$once('hook:destroyed', closeModal);
+    },
+    watch: {
+      show: {
+        handler(newValue) {
+          if (newValue) {
+            this.preventBackgroundScrolling && document.body.style.setProperty('overflow', 'hidden');
+          } else {
+            this.preventBackgroundScrolling && document.body.style.removeProperty('overflow');
+          }
+        },
+        immediate: true
+      }
     },
     methods: {
       dismiss() {
