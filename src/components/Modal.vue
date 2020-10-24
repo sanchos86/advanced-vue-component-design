@@ -1,12 +1,16 @@
 <template>
-  <div class="modal-overlay" v-show="show">
-    <div class="modal">
-      <div class="modal__body">
-        <p class="modal__text">Советское искусствоведение воспринимало полотно Владимира Серова как одно из наиболее значительных произведений искусства, созданных в послевоенный период. Анализ замысла картины, её композиционного и колористического решения проводили в своих работах такие видные деятели советской художественной культуры, как доктор культурологии Иван Астахов, доктор искусствоведения Софья Коровкевич, доктор искусствоведения и действительный член Академии художеств СССР Андрей Лебедев.</p>
+  <div class="custom-modal-overlay" v-show="show">
+    <div class="custom-modal">
+      <div class="custom-modal__body">
+        <slot>
+          <p class="custom-modal__text">Советское искусствоведение воспринимало полотно Владимира Серова как одно из наиболее значительных произведений искусства, созданных в послевоенный период. Анализ замысла картины, её композиционного и колористического решения проводили в своих работах такие видные деятели советской художественной культуры, как доктор культурологии Иван Астахов, доктор искусствоведения Софья Коровкевич, доктор искусствоведения и действительный член Академии художеств СССР Андрей Лебедев.</p>
+        </slot>
       </div>
-      <div class="modal__footer">
+      <div class="custom-modal__footer">
         <button @click="dismiss">Cancel</button>
-        <button>Submit</button>
+        <slot name="submit">
+          <button>Submit</button>
+        </slot>
       </div>
     </div>
   </div>
@@ -55,7 +59,7 @@
 </script>
 
 <style scoped>
-  .modal-overlay {
+  .custom-modal-overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -64,7 +68,7 @@
     background-color: rgba(0, 0, 0, .75);
   }
 
-  .modal {
+  .custom-modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,7 +79,7 @@
     padding: 32px;
   }
 
-  .modal button:first-of-type {
+  .custom-modal button:first-of-type {
     margin-right: 16px;
   }
 </style>

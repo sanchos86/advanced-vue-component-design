@@ -6,20 +6,24 @@
     <hr>
     <AnnouncementModal />
     <hr>
+    <OrderForm />
+    <portal-target name="modals" />
   </div>
 </template>
 
 <script>
 import ToggleInput from './components/ToggleInput.vue'
 import DatePicker from '@/components/DatePicker';
-import AnnouncementModal from '@/components/AnnouncementModal';
+import AnnouncementModal from '@/components/AnnouncementModal.vue';
+import OrderForm from '@/components/OrderForm.vue';
 
 export default {
   name: 'App',
   components: {
     DatePicker,
     ToggleInput,
-    AnnouncementModal
+    AnnouncementModal,
+    OrderForm
   },
   data() {
     return {
