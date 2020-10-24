@@ -1,6 +1,6 @@
 <template>
-  <button class="btn btn-small btn-danger" @click="show = true">
-    Delete account
+  <button @click="show = true">
+    <slot />
     <portal to="modals">
       <Modal :show="show" @close="show = false">
         <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores aspernatur doloremque ex,
