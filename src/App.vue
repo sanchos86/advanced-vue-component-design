@@ -20,6 +20,13 @@
       </MediaCard>
     </div>
     <hr>
+    <div class="d-flex justify-content-center">
+      <ContactsList :users="users">
+        <template v-slot:email="{ user }">
+          <a :href="`mailto:${user.email}`">{{ user.email }}</a>
+        </template>
+      </ContactsList>
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -30,6 +37,7 @@ import DatePicker from '@/components/DatePicker';
 import AnnouncementModal from '@/components/AnnouncementModal.vue';
 import OrderForm from '@/components/OrderForm.vue';
 import MediaCard from '@/components/MediaCard.vue';
+import ContactsList from '@/components/ContactsList';
 
 export default {
   name: 'App',
@@ -38,13 +46,23 @@ export default {
     ToggleInput,
     AnnouncementModal,
     OrderForm,
-    MediaCard
+    MediaCard,
+    ContactsList
   },
   data() {
     return {
       checked: false,
-      date: new Date()
+      date: new Date(),
+      users: []
     };
+  },
+  created() {
+    fetch('https://randomuser.me/api/?results=10')
+      .then(response => response.json())
+      .then((response) => {
+        this.users = response.results;
+      })
+      .catch(error => console.error(error));
   }
 }
 </script>
@@ -53,6 +71,7 @@ export default {
 :root {
   --color-primary: #007bff;
   --color-secondary: #dae0e5;
+  --color-grey: #cccccc;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
