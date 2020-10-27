@@ -36,7 +36,9 @@
         }
       };
       document.addEventListener('keydown', closeModal);
-      this.$once('hook:destroyed', closeModal);
+      this.$once('hook:destroyed', () => {
+        document.removeEventListener('keydown', closeModal);
+      });
     },
     watch: {
       show: {

@@ -27,6 +27,11 @@
         </template>
       </ContactsList>
     </div>
+    <hr>
+    <div class="mb-4">
+      <h3>Lesson 12. Render Functions 101</h3>
+      <HelloWorld tag="button" text="Обычным языком средневекового европейского письма был латинский." />
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -37,7 +42,8 @@ import DatePicker from '@/components/DatePicker';
 import AnnouncementModal from '@/components/AnnouncementModal.vue';
 import OrderForm from '@/components/OrderForm.vue';
 import MediaCard from '@/components/MediaCard.vue';
-import ContactsList from '@/components/ContactsList';
+import ContactsList from '@/components/ContactsList.vue';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'App',
@@ -47,7 +53,8 @@ export default {
     AnnouncementModal,
     OrderForm,
     MediaCard,
-    ContactsList
+    ContactsList,
+    HelloWorld
   },
   data() {
     return {
