@@ -37,6 +37,7 @@
       <h3>Lesson 13. Render Functions And Components</h3>
       <CompositeComponent />
     </div>
+    <BigComponent />
     <portal-target name="modals" />
   </div>
 </template>
@@ -50,6 +51,7 @@ import MediaCard from '@/components/MediaCard.vue';
 import ContactsList from '@/components/ContactsList.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import CompositeComponent from '@/components/CompositeComponent.vue';
+import BigComponent from '@/components/BigComponent.vue';
 
 export default {
   name: 'App',
@@ -61,7 +63,8 @@ export default {
     MediaCard,
     ContactsList,
     HelloWorld,
-    CompositeComponent
+    CompositeComponent,
+    BigComponent
   },
   data() {
     return {
