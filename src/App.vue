@@ -32,6 +32,11 @@
       <h3>Lesson 12. Render Functions 101</h3>
       <HelloWorld tag="button" text="Обычным языком средневекового европейского письма был латинский." />
     </div>
+    <hr>
+    <div class="mb-4">
+      <h3>Lesson 13. Render Functions And Components</h3>
+      <CompositeComponent />
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -44,6 +49,7 @@ import OrderForm from '@/components/OrderForm.vue';
 import MediaCard from '@/components/MediaCard.vue';
 import ContactsList from '@/components/ContactsList.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
+import CompositeComponent from '@/components/CompositeComponent.vue';
 
 export default {
   name: 'App',
@@ -54,7 +60,8 @@ export default {
     OrderForm,
     MediaCard,
     ContactsList,
-    HelloWorld
+    HelloWorld,
+    CompositeComponent
   },
   data() {
     return {
