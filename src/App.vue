@@ -38,6 +38,18 @@
       <CompositeComponent />
     </div>
     <BigComponent />
+    <hr>
+    <h3>Lesson 15. Render Functions And Slots</h3>
+    <div class="text-center mb-4">
+      <RenderAndSlots>
+        <template v-slot:default="{ name }">
+          <strong>{{ name }}</strong>
+        </template>
+      </RenderAndSlots>
+    </div>
+    <div class="text-center mb-4">
+      <RenderAndSlotsV2>RenderAndSlotsV2</RenderAndSlotsV2>
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -52,6 +64,8 @@ import ContactsList from '@/components/ContactsList.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import CompositeComponent from '@/components/CompositeComponent.vue';
 import BigComponent from '@/components/BigComponent.vue';
+import RenderAndSlots from '@/components/RenderAndSlots.vue'
+import RenderAndSlotsV2 from '@/components/RenderAndSlotsV2.vue'
 
 export default {
   name: 'App',
@@ -64,7 +78,9 @@ export default {
     ContactsList,
     HelloWorld,
     CompositeComponent,
-    BigComponent
+    BigComponent,
+    RenderAndSlots,
+    RenderAndSlotsV2
   },
   data() {
     return {
