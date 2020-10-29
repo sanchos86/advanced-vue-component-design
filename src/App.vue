@@ -50,6 +50,36 @@
     <div class="text-center mb-4">
       <RenderAndSlotsV2>RenderAndSlotsV2</RenderAndSlotsV2>
     </div>
+    <hr>
+    <h3>Lesson 16. Data Provider Components</h3>
+    <DataProvider url="https://randomuser.me/api/?results=5">
+      <template v-slot:default="{ data, loading }">
+        <div class="contacts-list mb-4">
+          <h4>Contacts List</h4>
+          <div v-if="loading">Loading...</div>
+          <div v-else>
+            <div v-for="item in data" :key="item.id.value">
+              <div><strong>{{ item.login.username }}</strong></div>
+              <div><i>{{ item.email }}</i></div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </DataProvider>
+    <DataProvider url="https://swapi.dev/api/people">
+      <template v-slot:default="{ data, loading }">
+        <div class="contacts-list m-4 p-4 w-25 bg-info rounded">
+          <h4>Star wars</h4>
+          <div v-if="loading">Loading...</div>
+          <div v-else>
+            <div v-for="(item, index) in data" class="text-left mb-2" :key="index">
+              <div><a :href="item.url" class="text-white" target="_blank">{{ item.name }}</a></div>
+              <div><a :href="item.homeworld" class="text-white" target="_blank">Planet</a></div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </DataProvider>
     <portal-target name="modals" />
   </div>
 </template>
@@ -64,8 +94,9 @@ import ContactsList from '@/components/ContactsList.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import CompositeComponent from '@/components/CompositeComponent.vue';
 import BigComponent from '@/components/BigComponent.vue';
-import RenderAndSlots from '@/components/RenderAndSlots.vue'
-import RenderAndSlotsV2 from '@/components/RenderAndSlotsV2.vue'
+import RenderAndSlots from '@/components/RenderAndSlots.vue';
+import RenderAndSlotsV2 from '@/components/RenderAndSlotsV2.vue';
+import DataProvider from '@/components/DataProvider.vue';
 
 export default {
   name: 'App',
@@ -80,7 +111,8 @@ export default {
     CompositeComponent,
     BigComponent,
     RenderAndSlots,
-    RenderAndSlotsV2
+    RenderAndSlotsV2,
+    DataProvider
   },
   data() {
     return {
