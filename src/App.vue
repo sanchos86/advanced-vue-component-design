@@ -80,6 +80,16 @@
         </div>
       </template>
     </DataProvider>
+    <hr>
+    <h3 class="mb-4">Lesson 17. Getting Started With Renderless Components</h3>
+    <div class="max-w-sm mx-auto card mb-8 text-left">
+      <label class="form-label mb-2">Inline Tag Input</label>
+      <InlineTagInput v-model="tags" />
+    </div>
+    <div class="max-w-sm mx-auto card mb-8 text-left">
+      <label class="form-label mb-2">Stacked Tag Input</label>
+      <StackedTagInput v-model="flowers" />
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -97,6 +107,8 @@ import BigComponent from '@/components/BigComponent.vue';
 import RenderAndSlots from '@/components/RenderAndSlots.vue';
 import RenderAndSlotsV2 from '@/components/RenderAndSlotsV2.vue';
 import DataProvider from '@/components/DataProvider.vue';
+import InlineTagInput from '@/components/InlineTagInput.vue';
+import StackedTagInput from '@/components/StackedTagInput.vue';
 
 export default {
   name: 'App',
@@ -112,13 +124,17 @@ export default {
     BigComponent,
     RenderAndSlots,
     RenderAndSlotsV2,
-    DataProvider
+    DataProvider,
+    InlineTagInput,
+    StackedTagInput
   },
   data() {
     return {
       checked: false,
       date: new Date(),
-      users: []
+      users: [],
+      tags: ['awesome', 'cool', 'nice', 'beautiful'],
+      flowers: ['camomile', 'rose']
     };
   },
   created() {
@@ -147,3 +163,5 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+<style src="./assets/app.css"></style>
