@@ -90,6 +90,13 @@
       <label class="form-label mb-2">Stacked Tag Input</label>
       <StackedTagInput v-model="flowers" />
     </div>
+    <hr>
+    <h3 class="mb-4">Lesson 25. Building an Element Query Component</h3>
+    <div class="d-flex justify-content-center mb-8">
+      <div class="w-25">
+        <ProfileCard />
+      </div>
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -109,6 +116,7 @@ import RenderAndSlotsV2 from '@/components/RenderAndSlotsV2.vue';
 import DataProvider from '@/components/DataProvider.vue';
 import InlineTagInput from '@/components/InlineTagInput.vue';
 import StackedTagInput from '@/components/StackedTagInput.vue';
+import ProfileCard from '@/components/ProfileCard.vue';
 
 export default {
   name: 'App',
@@ -126,7 +134,8 @@ export default {
     RenderAndSlotsV2,
     DataProvider,
     InlineTagInput,
-    StackedTagInput
+    StackedTagInput,
+    ProfileCard
   },
   data() {
     return {
