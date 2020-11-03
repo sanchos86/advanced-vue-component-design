@@ -1,0 +1,38 @@
+<template>
+  <div class="accordion-item text-left">
+    <div class="accordion-item-header" role="button" @click="toggle">
+      <slot name="header"></slot>
+      <svg class="icon" :class="{ 'rotate-90': active }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+      </svg>
+    </div>
+    <div class="accordion-item-body" v-show="active">
+      <slot name="content"></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    inject: ['accordionListState'],
+    props: {
+      itemId: Number
+    },
+    computed: {
+      active() {
+        return this.accordionListState.activeItem === this.itemId;
+      }
+    },
+    methods: {
+      toggle() {
+        this.accordionListState.activeItem = this.accordionListState.activeItem === this.itemId ? null : this.itemId;
+      }
+    }
+  }
+</script>
+
+<style>
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+</style>

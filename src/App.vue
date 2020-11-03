@@ -97,6 +97,73 @@
         <ProfileCard />
       </div>
     </div>
+    <hr>
+    <h3 class="mb-4">Lesson 26. Compound Components and ProvideInject</h3>
+    <div class="max-w-sm mx-auto mb-8">
+      <AccordionList>
+        <AccordionItem :item-id="1">
+          <template v-slot:header>
+            Item 1
+          </template>
+          <template v-slot:content>
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores corporis cumque dolorum facere hic
+              in, labore laudantium, magni pariatur perferendis repellat repudiandae rerum vel! Aliquid aperiam
+              molestias perspiciatis sunt tempore?
+            </div>
+            <div>Ad alias asperiores culpa cum, delectus distinctio dolor dolores dolorum illo ipsa natus nemo nostrum
+              perspiciatis quia quibusdam quidem quo ratione reiciendis sit soluta sunt temporibus voluptates! Beatae,
+              dolorum soluta.
+            </div>
+            <div>Amet asperiores assumenda blanditiis earum exercitationem illo impedit ipsum modi molestiae nesciunt,
+              obcaecati officia qui quidem quisquam similique velit voluptatem! Alias atque eum illum incidunt saepe
+              sunt ullam veniam voluptates?
+            </div>
+          </template>
+        </AccordionItem>
+        <AccordionItem :item-id="2">
+          <template v-slot:header>
+            Item 2
+          </template>
+          <template v-slot:content>
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores corporis cumque dolorum facere hic
+              in, labore laudantium, magni pariatur perferendis repellat repudiandae rerum vel! Aliquid aperiam
+              molestias perspiciatis sunt tempore?
+            </div>
+            <div>Ad alias asperiores culpa cum, delectus distinctio dolor dolores dolorum illo ipsa natus nemo nostrum
+              perspiciatis quia quibusdam quidem quo ratione reiciendis sit soluta sunt temporibus voluptates! Beatae,
+              dolorum soluta.
+            </div>
+          </template>
+        </AccordionItem>
+        <AccordionItem :item-id="3">
+          <template v-slot:header>
+            Item 3
+          </template>
+          <template v-slot:content>
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam architecto blanditiis consequuntur
+              debitis dignissimos dolor doloremque dolores facilis id, natus nobis odit omnis saepe tempore temporibus
+              voluptas voluptatibus voluptatum!
+            </div>
+            <div>Aliquid cumque dolore quaerat quisquam! Accusantium adipisci amet asperiores aspernatur autem beatae
+              consequatur culpa deleniti, ducimus error facere facilis fuga id impedit labore libero, maiores minus
+              numquam odio tenetur, voluptatum.
+            </div>
+            <div>Architecto at atque consectetur cum expedita in incidunt ipsam iure maxime, molestias odit provident
+              repellendus sapiente sint ut. Amet cupiditate dicta eveniet excepturi magnam natus similique veniam,
+              voluptate? Eaque, nulla.
+            </div>
+            <div>Accusantium, aliquam animi asperiores blanditiis cumque cupiditate debitis dignissimos dolore eligendi
+              enim exercitationem explicabo, fuga harum iure labore minima, nostrum praesentium quae quasi ratione rem
+              reprehenderit saepe sint voluptates voluptatibus?
+            </div>
+            <div>Aperiam asperiores autem culpa delectus earum error, exercitationem expedita fugiat in inventore
+              laudantium libero magni modi officiis pariatur perspiciatis quia quidem quisquam, quo quos ratione
+              reprehenderit tempore temporibus vero voluptas!
+            </div>
+          </template>
+        </AccordionItem>
+      </AccordionList>
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -117,6 +184,8 @@ import DataProvider from '@/components/DataProvider.vue';
 import InlineTagInput from '@/components/InlineTagInput.vue';
 import StackedTagInput from '@/components/StackedTagInput.vue';
 import ProfileCard from '@/components/ProfileCard.vue';
+import AccordionItem from '@/components/AccordionItem.vue';
+import AccordionList from '@/components/AccordionList.vue';
 
 export default {
   name: 'App',
@@ -135,7 +204,9 @@ export default {
     DataProvider,
     InlineTagInput,
     StackedTagInput,
-    ProfileCard
+    ProfileCard,
+    AccordionItem,
+    AccordionList
   },
   data() {
     return {
