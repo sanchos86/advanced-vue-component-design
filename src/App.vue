@@ -202,6 +202,14 @@
         </SortableList>
       </div>
     </div>
+    <hr>
+    <h3>Lesson 28. Building a Search Select</h3>
+    <div class="max-w-sm mx-auto bg-white rounded shadow p-8 mb-8" style="margin-bottom: 200px;">
+      <div class="mb-4">
+        <label class="form-label mb-2">Favorite Trash Band</label>
+        <SearchSelect v-model="selectedName" :options="names" :filter-function="filterFunction" />
+      </div>
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
@@ -229,6 +237,7 @@ import AccordionList from '@/components/AccordionList.vue';
 import SortableList from '@/components/SortableList.vue';
 import SortableItem from '@/components/SortableItem.vue';
 import SortableHandle from '@/components/SortableHandle.vue';
+import SearchSelect from '@/components/SearchSelect.vue';
 
 export default {
   name: 'App',
@@ -252,7 +261,8 @@ export default {
     AccordionList,
     SortableList,
     SortableItem,
-    SortableHandle
+    SortableHandle,
+    SearchSelect
   },
   data() {
     return {
@@ -266,7 +276,9 @@ export default {
         name: faker.name.findName(),
         email: faker.internet.email(),
         avatar: faker.image.avatar()
-      }))
+      })),
+      selectedName: '',
+      names: Array.from({ length: 20 }).map(() => faker.name.findName())
     };
   },
   created() {
@@ -276,6 +288,11 @@ export default {
         this.users = response.results;
       })
       .catch(error => console.error(error));
+  },
+  methods: {
+    filterFunction(search, options) {
+      return options.filter(el => el.endsWith(search));
+    }
   }
 }
 </script>
