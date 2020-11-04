@@ -164,11 +164,51 @@
         </AccordionItem>
       </AccordionList>
     </div>
+    <hr>
+    <h3 class="mb-4">Lesson 27. Building a Compound Sortable List Component</h3>
+    <!--  TODO wrap in data provider  -->
+    <div class="max-w-sm mx-auto mb-8">
+      <div class="card">
+        <h1 class="text-2xl font-bold mb-6">Contacts</h1>
+        <SortableList v-model="contacts">
+          <template v-slot:default="{ items: contacts }">
+            <div class="contact-list">
+              <SortableItem
+                v-for="contact in contacts"
+                :key="contact.id"
+              >
+                <div class="contact-list-item">
+                  <div class="contact-list-contact">
+                    <img class="contact-list-avatar" :src="contact.avatar" alt="">
+                    <div>
+                      <div class="contact-list-name">{{ contact.name }}</div>
+                      <div class="contact-list-email">{{ contact.email }}</div>
+                    </div>
+                  </div>
+                  <SortableHandle>
+                    <svg
+                      class="contact-list-handle"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path fill-rule="evenodd" d="M14 4h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM8 4h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm6 6h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zm-6 0h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zm6 6h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1zm-6 0h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </SortableHandle>
+                </div>
+              </SortableItem>
+            </div>
+          </template>
+        </SortableList>
+      </div>
+    </div>
     <portal-target name="modals" />
   </div>
 </template>
 
 <script>
+import faker from 'faker/locale/ru';
+
 import ToggleInput from './components/ToggleInput.vue'
 import DatePicker from '@/components/DatePicker';
 import AnnouncementModal from '@/components/AnnouncementModal.vue';
@@ -186,6 +226,9 @@ import StackedTagInput from '@/components/StackedTagInput.vue';
 import ProfileCard from '@/components/ProfileCard.vue';
 import AccordionItem from '@/components/AccordionItem.vue';
 import AccordionList from '@/components/AccordionList.vue';
+import SortableList from '@/components/SortableList.vue';
+import SortableItem from '@/components/SortableItem.vue';
+import SortableHandle from '@/components/SortableHandle.vue';
 
 export default {
   name: 'App',
@@ -206,7 +249,10 @@ export default {
     StackedTagInput,
     ProfileCard,
     AccordionItem,
-    AccordionList
+    AccordionList,
+    SortableList,
+    SortableItem,
+    SortableHandle
   },
   data() {
     return {
@@ -214,7 +260,13 @@ export default {
       date: new Date(),
       users: [],
       tags: ['awesome', 'cool', 'nice', 'beautiful'],
-      flowers: ['camomile', 'rose']
+      flowers: ['camomile', 'rose'],
+      contacts: Array.from({ length: 5 }).map(() => ({
+        id: faker.random.number(),
+        name: faker.name.findName(),
+        email: faker.internet.email(),
+        avatar: faker.image.avatar()
+      }))
     };
   },
   created() {
